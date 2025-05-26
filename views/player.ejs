@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Mini-Netflix</h1>
+      <nav>
+        <ul>
+          <li><a href="/">Upload</a></li>
+          <li><a href="/videos">Vidéos</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <main>
+      <section class="player-section">
+        <div class="video-title">
+          <h2><%= video.name %></h2>
+          <a href="/videos" class="btn-secondary">Retour aux vidéos</a>
+        </div>
+        
+        <div class="video-player">
+          <video controls autoplay width="100%">
+            <source src="<%= video.path %>" type="video/mp4">
+            Votre navigateur ne supporte pas la lecture de vidéos.
+          </video>
+        </div>
+        
+        <div class="video-controls">
+          <button id="fullscreen-btn" class="btn-secondary">Plein écran</button>
+        </div>
+      </section>
+    </main>
+    
+    <footer>
+      <p>&copy; 2025 Mini-Netflix - Projet ExpressJS</p>
+    </footer>
+  </div>
+  
+  <script>
+    // Ajouter la fonctionnalité de plein écran
+    document.addEventListener('DOMContentLoaded', function() {
+      const video = document.querySelector('video');
+      const fullscreenBtn = document.getElementById('fullscreen-btn');
+      
+      if (fullscreenBtn && video) {
+        fullscreenBtn.addEventListener('click', function() {
+          if (video.requestFullscreen) {
+            video.requestFullscreen();
+          } else if (video.webkitRequestFullscreen) { /* Safari */
+            video.webkitRequestFullscreen();
+          } else if (video.msRequestFullscreen) { /* IE11 */
+            video.msRequestFullscreen();
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

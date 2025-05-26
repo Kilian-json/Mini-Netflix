@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Mini-Netflix</h1>
+      <nav>
+        <ul>
+          <li><a href="/" class="active">Upload</a></li>
+          <li><a href="/videos">Vidéos</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <main>
+      <section class="upload-section">
+        <h2>Uploader une vidéo</h2>
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="video">Sélectionnez une vidéo (MP4 ou WebM) :</label>
+            <input type="file" id="video" name="video" accept="video/mp4,video/webm" required>
+          </div>
+          <div class="form-controls">
+            <button type="submit" class="btn-primary">Uploader</button>
+          </div>
+        </form>
+      </section>
+      
+      <section class="info-section">
+        <h3>Formats acceptés</h3>
+        <ul>
+          <li>MP4 (.mp4)</li>
+          <li>WebM (.webm)</li>
+        </ul>
+        <p class="note">Taille maximale : 100 MB</p>
+      </section>
+    </main>
+    
+    <footer>
+      <p>&copy; 2025 Mini-Netflix - Projet ExpressJS</p>
+    </footer>
+  </div>
+  
+  <script src="/js/main.js"></script>
+</body>
+</html>

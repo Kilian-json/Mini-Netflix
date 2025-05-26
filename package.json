@@ -1,0 +1,20 @@
+{
+    "name": "mini-netflix",
+    "version": "1.0.0",
+    "description": "Application Mini-Netflix pour upload et lecture de vidéos",
+    "main": "app.js",
+    "scripts": {
+      "start": "node app.js",
+      "dev": "nodemon app.js"
+    },
+    "dependencies": {
+      "ejs": "^3.1.9",
+      "express": "^4.18.2",
+      "multer": "^1.4.5-lts.1"
+    },
+    "devDependencies": {
+      "nodemon": "^3.0.1"
+    },
+    "author": "",
+    "license": "ISC"
+  }

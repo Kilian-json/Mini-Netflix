@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Mini-Netflix</h1>
+      <nav>
+        <ul>
+          <li><a href="/">Upload</a></li>
+          <li><a href="/videos" class="active">Vidéos</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <main>
+      <section class="videos-section">
+        <h2>Bibliothèque de vidéos</h2>
+        
+        <% if (videos && videos.length > 0) { %>
+          <div class="video-grid">
+            <% videos.forEach(video => { %>
+              <div class="video-card">
+                <div class="video-thumbnail">
+                  <a href="/player/<%= video.name %>">
+                    <!-- Créer une vignette avec le tag vidéo -->
+                    <video width="100%" height="auto" preload="metadata">
+                      <source src="<%= video.path %>" type="video/mp4">
+                      Votre navigateur ne supporte pas la lecture de vidéos.
+                    </video>
+                  </a>
+                </div>
+                <div class="video-info">
+                  <h3><a href="/player/<%= video.name %>"><%= video.name %></a></h3>
+                  <p class="video-meta">
+                    <span class="video-size"><%= video.size %></span>
+                    <span class="video-date"><%= video.createdAt.toLocaleDateString() %></span>
+                  </p>
+                </div>
+              </div>
+            <% }) %>
+          </div>
+        <% } else { %>
+          <div class="empty-state">
+            <p>Aucune vidéo n'a encore été uploadée.</p>
+            <a href="/" class="btn-primary">Uploader une vidéo</a>
+          </div>
+        <% } %>
+      </section>
+    </main>
+    
+    <footer>
+      <p>&copy; 2025 Mini-Netflix - Projet ExpressJS</p>
+    </footer>
+  </div>
+  
+  <script src="/js/main.js"></script>
+</body>
+</html>
